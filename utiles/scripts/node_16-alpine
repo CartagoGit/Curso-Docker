@@ -17,6 +17,10 @@ sh -c "yarn install && yarn start:dev"
 
 
 // Para hacerlo desde la distro de ubuntu en wl WSL2
+En este caso la ruta del proyecto esta en 
+\\wsl.localhost\Ubuntu\home\cartago\_proyectos\nest-graphql
+que se encuentra en la ruta de /home de ubuntu
+se deja la carpeta nest-graphql en esta carpeta por si en un futuro se desea realizar de nuevo el ejercicio
 
 !!!!! SEGUIR LOS PASOS DEL PROBLEMA EN WINDOWS Y APLICARLO DESDE EL WSL de ubuntu
 
