@@ -6,11 +6,12 @@ node:16-alpine3.16
 -> %cd% en cmd
 
 // sh es un commando shell para que una vez se ejecute, lance los comandos que se le pasan como string
+-> en Power shell el comando es pwsh en vez de sh
 
-docker container run ^
---name nest-app ^
--w /app ^
--p 3000:3000 ^
--v %cd%:/app ^
-node:16-alpine3.16 ^
-sh -c "yarn install && yarn start:dev"
+docker container run `
+--name nest-app `
+-w /app `
+-p 3000:3000 `
+-v  "$(pwd)":/app `
+node:16-alpine3.16 `
+pwsh -c "yarn install && yarn start:dev"
