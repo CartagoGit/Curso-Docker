@@ -14,3 +14,16 @@ docker container run `
 -v  ${PWD}:/app `
 node:16-alpine3.16 `
 sh -c "yarn install && yarn start:dev"
+
+
+// Para hacerlo desde la distro de ubuntu en wl WSL2
+
+!!!!! SEGUIR LOS PASOS DEL PROBLEMA EN WINDOWS Y APLICARLO DESDE EL WSL
+
+docker container run \
+--name nest-app \
+-w /app \
+-p 3002:3000 \
+-v $(pwd):/app \
+node:16-alpine3.16 \
+sh -c "yarn install && yarn start:dev"
