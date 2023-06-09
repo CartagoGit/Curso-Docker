@@ -10,6 +10,7 @@ docker container run ^
 -e MARIADB_ROOT_PASSWORD=root-secret-password ^
 -e MARIADB_DATABASE=world-db ^
 --volume world-db:/var/lib/mysql ^
+--network world-app ^
 mariadb:jammy
 
 
