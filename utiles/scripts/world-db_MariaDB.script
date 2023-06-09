@@ -1,4 +1,7 @@
 
+mariadb:jammy
+
+
 docker container run ^
 --name world-db ^
 -dp 3306:3306 ^
@@ -8,3 +11,5 @@ docker container run ^
 -e MARIADB_DATABASE=world-db ^
 --volume world-db:/var/lib/mysql ^
 mariadb:jammy
+
+
