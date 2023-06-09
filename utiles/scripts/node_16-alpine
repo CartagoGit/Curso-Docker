@@ -1,0 +1,16 @@
+node:16-alpine3.16
+
+// pwd es el path donde se encuentra la terminal en el momento de llamar el script
+-> "$(pwd)" en linux
+-> $(PWD) en powershell
+-> %cd% en cmd
+
+// sh es un commando shell para que una vez se ejecute, lance los comandos que se le pasan como string
+
+docker container run ^
+--name nest-app ^
+-w /app ^
+-p 3000:3000 ^
+-v %cd%:/app ^
+node:16-alpine3.16 ^
+sh -c "yarn install && yarn start:dev"
