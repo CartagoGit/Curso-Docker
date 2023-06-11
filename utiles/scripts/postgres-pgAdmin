@@ -1,4 +1,7 @@
 
+// crear volumen para almacenar la informacion de la bd
+docker volume create postgres-db
+
 // Montar container de postgres
 
 docker container run `
