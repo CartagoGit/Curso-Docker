@@ -1,0 +1,23 @@
+
+// Montar container de postgres
+
+docker container run `
+-d `
+--name postgres-db `
+-e POSTGRES_PASSWORD=123456 `
+-v postgres-db:/var/lib/postgresql/data `
+postgres:13.11
+
+// montar container de pgAdmin
+
+docker container run `
+--name pgAdmin `
+-e PGADMIN_DEFAULT_PASSWORD=123456 `
+-e PGADMIN_DEFAULT_EMAIL=superman@google.com `
+-dp 8080:80 `
+dpage/pgadmin4:7.3
+
+// Crear network para linkear los dos contenedores
+docker network create postgres-net
+docker network connect postgres-net postgres-db 
+docker network connect postgres-net pgAdmin
