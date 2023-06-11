@@ -1,23 +1,26 @@
-version : '3'
+version: "3"
 
-services: 
-  db:
-    container_name: postgres_database
-    image: postgres:13.11
-    volumes:
-      - postgres-db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=123456
-  pgAdmin:
-    depends_on:
-      - db
-    container_name: pgadmin
-    image: dpage/pgadmin4:7.3
-    environment:
-      - PGADMIN_DEFAULT_PASSWORD=123456
-      - PGADMIN_DEFAULT_EMAIL=superman@google.com
-    ports:
-      - "8080:80"
-volumes:
-  postgres-db:
-    external: true
+services:
+    db:
+        container_name: postgres_database
+        image: postgres:13.11
+        volumes:
+            # - postgres-db:/var/lib/postgresql/data #ejemplo
+            - ./volumes/postgres:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=123456
+    pgAdmin:
+        depends_on:
+            - db
+        container_name: pgadmin
+        image: dpage/pgadmin4:7.3
+        volumes:
+            - ./volumes/pgadmin:/var/lib/pgadmin
+        environment:
+            - PGADMIN_DEFAULT_PASSWORD=123456
+            - PGADMIN_DEFAULT_EMAIL=superman@google.com
+        ports:
+            - "8080:80"
+# volumes:
+#   postgres-db:
+#     external: true
