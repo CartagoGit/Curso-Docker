@@ -11,5 +11,8 @@
 	"license": "MIT",
 	"dependencies": {
 		"node-cron": "^3.0.2"
+	},
+	"devDependencies": {
+		"jest": "^29.5.0"
 	}
 }

@@ -1,9 +1,13 @@
 const cron = require("node-cron");
+const { syncDB } = require("./tasks/sync-db");
 let times = 0;
 
-cron.schedule("*/5 * * * * *", () => {
-	times++;
-	console.log("Tick cada 5 segundos.", `Veces que se ha repetido: ${times}`);
-});
-
 console.log("Inicio");
+
+
+// cron.schedule("*/5 * * * * *", () => {
+// 	times++;
+// 	console.log("Tick cada 5 segundos.", `Veces que se ha repetido: ${times}`);
+// });
+cron.schedule("*/5 * * * * *", syncDB);
+
