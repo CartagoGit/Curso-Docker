@@ -18,6 +18,12 @@ COPY . .
 # Realizar testing
 RUN npm run test
 
+# Eliminar archivos y directorios no necesarios en produccion
+RUN rm -rf tests node_modules 
+
+#unicamente los de produccion
+RUN npm install --prod
+
 # Comando que se ejecuta cuando se corre el contenedor
 CMD ["npm","start"]
 # CMD ["node","app.js"]
