@@ -1,6 +1,7 @@
 # si quisieramos crearlo manualmente para otra arquitectura
 # FROM --platform=arm64 node:19.2-alpine3.16
-FROM node:19.2-alpine3.16
+# FROM node:19.2-alpine3.16
+FROM --platform=$BUILDPLATFORM node:19.2-alpine3.16
 # ya tiene una carpeta interna /app /usr /lib etc
 
 
@@ -44,3 +45,9 @@ CMD ["npm","start"]
 # docker push cartagodocker/curso-cron-ticker:0.1.0
 
 # docker login
+
+# para cambiar las arquitecturas podemos seguir el siguiente tutorial
+# https://docs.docker.com/build/building/multi-platform/#getting-started
+
+# CON ESTO creamos la imagen y la colgamos en todas las arquitecturas disponibles
+# docker buildx build --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 --tag cartagodocker/curso-cron-ticker:latest --push .
