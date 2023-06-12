@@ -1,11 +1,15 @@
 {
-  "name": "cron-ticker-app",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Cartago <cv2cartago@gmail.com> (https://github.com/CartagoGit)",
-  "license": "MIT"
+	"name": "cron-ticker-app",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js"
+	},
+	"author": "Cartago <cv2cartago@gmail.com> (https://github.com/CartagoGit)",
+	"license": "MIT",
+	"dependencies": {
+		"node-cron": "^3.0.2"
+	}
 }
