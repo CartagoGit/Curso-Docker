@@ -1,4 +1,10 @@
 
+FROM node:19-alpine3.15 as dev
+WORKDIR /app
+COPY package.json package.json
+RUN yarn install
+CMD [ "yarn","start:dev"]
+
 FROM node:19-alpine3.15 as dev-deps
 WORKDIR /app
 COPY package.json package.json
@@ -15,7 +21,7 @@ RUN yarn build
 FROM node:19-alpine3.15 as prod-deps
 WORKDIR /app
 COPY package.json package.json
-RUN yarn install --frozen-lockfile
+RUN yarn install --omit=dev --frozen-lockfile
 
 
 FROM node:19-alpine3.15 as prod

@@ -7,9 +7,7 @@ services:
       context: .
       target: ${STAGE}
       dockerfile: Dockerfile
-    volumes:
-      - .:/app/
-      - /app/node_modules
+    image: cartagodocker/teslo-shop-backend:${APP_VERSION}
     # command: yarn start:dev
     container_name: nest-app
     ports:
