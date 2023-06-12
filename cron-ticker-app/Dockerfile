@@ -23,3 +23,12 @@ CMD ["npm","start"]
 
 # Para correr el contenedor
 # docker container run cron-ticker
+
+
+#Cambiar el tag de la imagen
+# docker image tag cron-ticker cartagodocker/curso-cron-ticker:0.1.0
+
+# para subir la imagen
+# docker push cartagodocker/curso-cron-ticker:0.1.0
+
+# docker login
