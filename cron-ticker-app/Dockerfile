@@ -1,3 +1,5 @@
+# si quisieramos crearlo manualmente para otra arquitectura
+# FROM --platform=arm64 node:19.2-alpine3.16
 FROM node:19.2-alpine3.16
 # ya tiene una carpeta interna /app /usr /lib etc
 
