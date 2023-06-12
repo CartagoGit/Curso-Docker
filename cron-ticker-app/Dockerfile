@@ -12,7 +12,11 @@ COPY package.json ./
 # instalamos las dependencias
 RUN npm install
 
-COPY app.js ./
+# COPY app.js ./
+COPY . .
+
+# Realizar testing
+RUN npm run test
 
 # Comando que se ejecuta cuando se corre el contenedor
 CMD ["npm","start"]
