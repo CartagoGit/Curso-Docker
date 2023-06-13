@@ -3,6 +3,8 @@ version: '3'
 
 services:
   app:
+  # PODRIA USARSE LA IMAGEN EN VEZ DEL VOLUMEN Y LA BUILD
+    # image: cartagodocker/teslo-shop:latest
     build:
       context: .
       target: ${STAGE}
@@ -10,6 +12,7 @@ services:
     volumes:
       - .:/app/
       - /app/node_modules
+
     # command: yarn start:dev
     container_name: nest-app
     ports:
