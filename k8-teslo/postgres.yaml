@@ -29,7 +29,7 @@ spec:
 # Los 3 guiones son para separar archivos, en este caso para crear un servicio en el mismo archivo
 
 apiVersion: v1
-king: Service
+kind: Service
 metadata:
   name: postgres-service
 spec:
