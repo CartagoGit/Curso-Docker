@@ -18,5 +18,8 @@ FROM nginx:1.21.3 as prod-deps
 EXPOSE 80
 
 COPY --from=builder app/dist /usr/share/nginx/html
+COPY assets /usr/share/nginx/html/assets
+
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
 CMD ["nginx", "-g", "daemon off;"]
