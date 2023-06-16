@@ -1,0 +1,58 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    
+jobs:
+  build:
+    env: 
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}     
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout Code
+      uses: actions/checkout@v3
+      with:
+        # Toma todo el codigo que tengo en el repositorio
+        fetch-depth: 0
+        
+    - name: Git Semantic Version Extension
+      uses: PaulHatch/semantic-version@v5.0.3
+      with:
+        major_pattern: "major:"
+        minor_pattern: "feat:"
+        version_format: "${major}.${minor}.${patch}-pre${increment}"
+        namespace: docker-graphql
+        tag_prefix: "docker-graphql_"
+      id: version_extension
+     
+    - name: Docker Login
+      env:
+        VERSION_TAG: ${{ steps.version_extension.outputs.version_tag }}
+      run: |
+        echo "Iniciando login"
+        docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+        echo "New version: $VERSION_TAG"
+        echo "Fin del login"
+        
+    - name: Build Docker Image
+      env:
+        VERSION: ${{ steps.version_extension.outputs.version }}
+      run: |       
+        docker build -t $DOCKER_USER/docker-graphql:$VERSION .
+        docker build -t $DOCKER_USER/docker-graphql:latest .
+        
+    - name: Push Docker Image
+      env:
+        VERSION: ${{ steps.version_extension.outputs.version }}
+      run: |
+        docker push $DOCKER_USER/docker-graphql:$VERSION
+        docker push $DOCKER_USER/docker-graphql:latest
+        
+    
+#     - name: Build the Docker image
+#       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
